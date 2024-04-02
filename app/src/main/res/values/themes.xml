@@ -3,6 +3,7 @@
     <style name="Base.Theme.AndroidJeremiasKalebe" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/status_bar</item>
     </style>
 
     <style name="Base.Theme.ActionBar" parent="Theme.Material3.DayNight">

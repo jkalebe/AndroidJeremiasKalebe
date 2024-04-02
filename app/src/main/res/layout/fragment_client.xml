@@ -10,6 +10,10 @@
     android:paddingHorizontal="20dp"
     tools:context=".views.fragment.ClientFragment">
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"/>
+    
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +114,10 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -269,9 +277,16 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"/>
+
     <Button
+        android:id="@+id/btn_verify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.Material3.Button"
+        android:background="@drawable/button_rectangle"
         android:text="Verificar status do cliente" />
 
 </LinearLayout>
