@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.client.fragment.PermitFragment">
+    tools:context=".views.client.fragment.PermitFragment"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/main_menu_text">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/maxima_empty_state"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/license_title"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:text="Nada encontrado..."/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/license_subtitle"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:text="Não há alvarás para exibir,
+verifique com o responsável pelo ERP"/>
 
-</FrameLayout>
+
+
+</LinearLayout>

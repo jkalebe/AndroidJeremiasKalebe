@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +45,7 @@ class ClientFragment : Fragment() {
         setupAdapter()
         setupObserver()
         lifecycleScope.launch(Dispatchers.IO) { clientViewModel.getClient() }
+        (activity as? AppCompatActivity)?.supportActionBar?.title = "Dados do cliente"
     }
 
     private fun setupAdapter() {

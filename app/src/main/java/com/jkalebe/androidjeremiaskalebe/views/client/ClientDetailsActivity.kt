@@ -4,8 +4,10 @@ package com.jkalebe.androidjeremiaskalebe.views.client
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.jkalebe.androidjeremiaskalebe.R
@@ -20,8 +22,14 @@ class ClientDetailsActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        supportActionBar.apply {
-            title = "Dados do cliente"
+        supportActionBar?.apply {
+            titleColor = R.color.white
+            setBackgroundDrawable(ColorDrawable(
+                ContextCompat.getColor(
+                    this@ClientDetailsActivity,
+                    R.color.primary
+                )
+            ))
         }
 
         val navController =
