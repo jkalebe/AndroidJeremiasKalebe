@@ -3,14 +3,18 @@
     <style name="Base.Theme.AndroidJeremiasKalebe" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorOnPrimary">@color/status_bar</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowMenuButtonStyle</item>
     </style>
 
     <style name="Base.Theme.ActionBar" parent="Theme.Material3.DayNight">
-        <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="Theme.AndroidNoActionBar" parent="Base.Theme.AndroidJeremiasKalebe" />
     <style name="Theme.AndroidActionBar" parent="Base.Theme.ActionBar" />
+
+    <style name="OverflowMenuButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/white</item>
+        <item name="tint">@color/white</item>
+    </style>
 </resources>

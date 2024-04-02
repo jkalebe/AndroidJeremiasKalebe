@@ -18,19 +18,12 @@ class ClientDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityClientDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_AndroidNoActionBar)
         binding = ActivityClientDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        supportActionBar?.apply {
-            titleColor = R.color.white
-            setBackgroundDrawable(ColorDrawable(
-                ContextCompat.getColor(
-                    this@ClientDetailsActivity,
-                    R.color.primary
-                )
-            ))
-        }
+        setupToolBar()
 
         val navController =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -38,6 +31,10 @@ class ClientDetailsActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController.navController);
 
+    }
+
+    private fun setupToolBar() {
+        setSupportActionBar(binding.toolbar)
     }
 
     companion object {

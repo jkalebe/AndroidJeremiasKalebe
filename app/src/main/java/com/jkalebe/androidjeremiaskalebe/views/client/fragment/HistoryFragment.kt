@@ -3,12 +3,16 @@ package com.jkalebe.androidjeremiaskalebe.views.client.fragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.jkalebe.androidjeremiaskalebe.R
 import com.jkalebe.androidjeremiaskalebe.databinding.FragmentHistoryBinding
 import com.jkalebe.androidjeremiaskalebe.domain.models.Pedido
 import com.jkalebe.androidjeremiaskalebe.views.client.ClientViewModel
@@ -37,7 +41,12 @@ class HistoryFragment : Fragment() {
         clientViewModel.getOrders()
         setupAdapter()
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Hist. de pedidos"
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
     }
 
     private fun showSnackBar(message: String) {
@@ -55,6 +64,24 @@ class HistoryFragment : Fragment() {
 
     private fun showOrders(orders: List<Pedido>) {
         adapter.updateList(orders)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+
+        inflater.inflate(R.menu.fragment_hist_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_legends -> {
+                showSnackBar("Click ralizado com sucesso")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupObserver(){
