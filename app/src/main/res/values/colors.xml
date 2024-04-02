@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Geral -->
+    <color name="screen_background">#FFFFFF</color>
+    <color name="toolbar">#186096</color>
+    <color name="status_bar">#00386C</color>
+    <color name="screen_background_with_cards">#F1F1F1</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="bottom_navigation">#186096</color>
+    <color name="bottom_active_icon_text">#FFFFFF</color>
+    <color name="bottom_inactive_icon_text">#95B6CF</color>
+
+    <!-- Splash -->
+    <color name="splash_background_start">#186096</color>
+    <color name="splash_background_end">#053F6A</color>
+
+    <!-- Menu Principal -->
+    <color name="main_menu_icons">#00386C</color>
+    <color name="main_menu_text">#232323</color>
+    <color name="connection_status">#727272</color>
+
+    <!-- Dados do Cliente -->
+    <color name="client_data_text">#000000</color>
+    <color name="client_data_labels">#95989A</color>
+    <color name="corporate_name">#606060</color>
+    <color name="phone_button">#186096</color>
+    <color name="email_button">#C1392B</color>
+    <color name="check_status_button">#638735</color>
+
+    <!-- Histórico de Pedidos -->
+    <color name="order_history_text">#000000</color>
+    <color name="order_history_labels">#95989A</color>
+    <color name="processing_order">#95989A</color>
+    <color name="order_refused">#FF9900</color>
+    <color name="pending_order">#606060</color>
+    <color name="blocked_order">#3557AA</color>
+    <color name="released_order">#186096</color>
+    <color name="assembled_order">#7FAA33</color>
+    <color name="invoiced_order">#64863B</color>
+    <color name="canceled_order">#E40613</color>
+    <color name="budget_order">#2D3E4E</color>
+    <color name="erp_return_waiting">#757575</color>
+    <color name="success">#64863B</color>
+    <color name="partial_failure">#FF9900</color>
+    <color name="total_failure">#E40613</color>
+    <color name="order_cut">#FF9900</color>
+    <color name="order_lack">#BF595F</color>
+    <color name="erp_canceled_order">#E40613</color>
+    <color name="order_return">#186096</color>
+    <color name="telemarketing_order">#64863B</color>
+
+    <!-- Alvarás -->
+    <color name="license_title">#3E3E3E</color>
+    <color name="license_subtitle">#3E3E3E</color>
+</resources>
