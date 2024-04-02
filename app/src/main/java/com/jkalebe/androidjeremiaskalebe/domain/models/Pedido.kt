@@ -1,4 +1,4 @@
-package com.jkalebe.androidjeremiaskalebe.models
+package com.jkalebe.androidjeremiaskalebe.domain.models
 
 data class Pedido(
     val numero_ped_Rca: Int,

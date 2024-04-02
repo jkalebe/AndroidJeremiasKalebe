@@ -1,4 +1,4 @@
-package com.jkalebe.androidjeremiaskalebe.views
+package com.jkalebe.androidjeremiaskalebe.views.client
 
 
 import android.app.Activity
