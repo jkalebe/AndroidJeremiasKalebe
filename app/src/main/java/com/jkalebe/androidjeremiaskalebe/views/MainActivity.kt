@@ -1,4 +1,4 @@
-package com.jkalebe.androidjeremiaskalebe
+package com.jkalebe.androidjeremiaskalebe.views
 
 import android.app.Activity
 import android.content.Context
@@ -14,6 +14,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        setupClickListener()
+    }
+
+    private fun setupClickListener() {
+        binding.apply {
+            cardClient.setOnClickListener {
+                ClientDetailsActivity.navigateToClientDetailsActivity(
+                    this@MainActivity
+                )
+            }
+        }
     }
 
     companion object {

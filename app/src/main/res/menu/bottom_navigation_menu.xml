@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentDataClient"
+        android:icon="@drawable/ic_maxima_pessoa_ativo"
+        android:title="@string/title_data_client" />
+
+    <item
+        android:id="@+id/fragmentHistory"
+        android:icon="@drawable/ic_history"
+        android:title="@string/title_history" />
+
+    <item
+        android:id="@+id/fragmentPermit"
+        android:icon="@drawable/ic_alvara"
+        android:title="@string/title_permit" />
+</menu>

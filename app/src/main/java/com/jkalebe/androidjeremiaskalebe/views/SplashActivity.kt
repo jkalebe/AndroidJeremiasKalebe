@@ -1,13 +1,15 @@
-package com.jkalebe.androidjeremiaskalebe
+package com.jkalebe.androidjeremiaskalebe.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.jkalebe.androidjeremiaskalebe.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_AndroidNoActionBar)
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({

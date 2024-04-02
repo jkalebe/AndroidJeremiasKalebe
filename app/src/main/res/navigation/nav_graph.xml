@@ -1,0 +1,20 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentDataClient">
+
+    <fragment
+        android:id="@+id/fragmentDataClient"
+        android:name="com.jkalebe.androidjeremiaskalebe.views.fragment.ClientFragment"
+        android:label="Dados do Cliente" />
+
+    <fragment
+        android:id="@+id/fragmentHistory"
+        android:name="com.jkalebe.androidjeremiaskalebe.views.fragment.HistoryFragment"
+        android:label="Histórico de Pedidos" />
+
+    <fragment
+        android:id="@+id/fragmentPermit"
+        android:name="com.jkalebe.androidjeremiaskalebe.views.fragment.PermitFragment"
+        android:label="Alvarás" />
+</navigation>

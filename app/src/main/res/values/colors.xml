@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Geral -->
+    <color name="primary">#186096</color>
     <color name="screen_background">#FFFFFF</color>
     <color name="toolbar">#186096</color>
     <color name="status_bar">#00386C</color>

@@ -2,8 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.AndroidJeremiasKalebe" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
-    <style name="Theme.AndroidJeremiasKalebe" parent="Base.Theme.AndroidJeremiasKalebe" />
+    <style name="Base.Theme.ActionBar" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/primary</item>
+    </style>
+
+    <style name="Theme.AndroidNoActionBar" parent="Base.Theme.AndroidJeremiasKalebe" />
+    <style name="Theme.AndroidActionBar" parent="Base.Theme.ActionBar" />
 </resources>
