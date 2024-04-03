@@ -1,7 +1,7 @@
 package com.jkalebe.androidjeremiaskalebe.core
 
 import androidx.room.Room
-import br.com.paygo.smart.core.database.AppDatabase
+import com.jkalebe.androidjeremiaskalebe.core.database.AppDatabase
 import com.jkalebe.androidjeremiaskalebe.data.remote.ApiInterface
 import com.jkalebe.androidjeremiaskalebe.core.api.RetrofitClient
 import com.jkalebe.androidjeremiaskalebe.data.repository.ApiRepository

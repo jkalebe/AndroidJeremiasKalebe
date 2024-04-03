@@ -19,7 +19,7 @@ interface ClientDAO {
     suspend fun insertClient(pedido: ClientEntity)
 
     @Query("SELECT * FROM Client")
-    fun getAllClients(): Flow<List<ClientDAO>>
+    fun getAllClients(): Flow<List<ClientEntity>>
 
     @Query("SELECT * FROM Client WHERE id = :clientId")
     fun getClientById(clientId: Int): Flow<ClientEntity?>
