@@ -17,7 +17,6 @@ class ClientDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityClientDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_AndroidNoActionBar)
         binding = ActivityClientDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
