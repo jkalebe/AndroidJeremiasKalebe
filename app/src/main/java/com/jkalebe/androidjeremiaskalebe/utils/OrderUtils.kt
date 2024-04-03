@@ -13,6 +13,16 @@ object OrderUtils {
         }
     }
 
+    fun getIconBySubtitle(subtitle: String?): Int {
+        return when (subtitle) {
+            "PEDIDO_CANCELADO_ERP" -> R.drawable.ic_cancel_erp
+            "PEDIDO_SOFREU_CORTE" -> R.drawable.ic_cut
+            "PEDIDO_FEITO_TELEMARKETING" -> R.drawable.ic_phone
+            "PEDIDO_COM_DEVOLUCAO" -> R.drawable.ic_undo
+            else -> R.drawable.ic_remove
+        }
+    }
+
     fun getStatusOrders(status:String):String{
         if (status == "Processado")
             return "L"

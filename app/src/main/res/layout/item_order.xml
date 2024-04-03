@@ -62,7 +62,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="11sp"
+                android:layout_weight="1"
                 android:text=" 848.246 - A F DA SILVA TUCUMA"/>
+            <ImageView
+                android:id="@+id/tv_icon_subtitles"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/ic_cut"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

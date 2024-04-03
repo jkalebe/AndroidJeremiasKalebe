@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -42,6 +43,15 @@ class OrderAdapter(
                 val icon = OrderUtils.getIconByCriticize(pedido.critica)
                 Glide.with(context).load(icon)
                     .into(tvIconeCriticize)
+
+                if(pedido.legendas.isNullOrEmpty()){
+                    tvIconSubtitles.visibility = View.GONE
+                } else {
+                    tvIconSubtitles.visibility = View.VISIBLE
+                    val icon = OrderUtils.getIconBySubtitle(pedido.legendas.first())
+                    Glide.with(context).load(icon)
+                        .into(tvIconSubtitles)
+                }
             }
         }
 
