@@ -4,11 +4,9 @@ package com.jkalebe.androidjeremiaskalebe.views.client
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.jkalebe.androidjeremiaskalebe.R
