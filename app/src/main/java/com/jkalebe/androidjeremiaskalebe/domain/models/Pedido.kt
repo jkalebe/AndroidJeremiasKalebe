@@ -11,7 +11,7 @@ data class Pedido(
     val status: String,
     val critica: String?,
     val tipo: String,
-    val legendas: List<String>
+    val legendas: List<String>?
 )
 data class PedidosContainer(
     val pedidos: List<Pedido>
@@ -29,7 +29,7 @@ fun Pedido.toOrderEntity(clientId: Int): OrderEntity {
         status = this.status,
         critica = this.critica,
         tipo = this.tipo,
-        legendas = this.legendas
+        legendas = this.legendas ?: listOf()
     )
 }
 

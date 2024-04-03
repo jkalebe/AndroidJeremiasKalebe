@@ -31,6 +31,7 @@ class HistoryFragment : Fragment() {
     private val binding get() = _binding!!
     private val clientViewModel by viewModel<ClientViewModel>()
     private lateinit var adapter: OrderAdapter
+    private val clientId = 30987
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,7 +43,7 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
-        clientViewModel.getOrders()
+        clientViewModel.getOrdersByClientId(clientId)
         setupAdapter()
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Hist. de pedidos"
     }

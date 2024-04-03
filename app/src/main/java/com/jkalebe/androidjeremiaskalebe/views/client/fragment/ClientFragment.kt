@@ -25,6 +25,7 @@ class ClientFragment : Fragment() {
     private var _binding: FragmentClientBinding? = null
     private val clientViewModel by viewModel<ClientViewModel>()
     private lateinit var adapter: ClientAdapter
+    private val clientId = 30987
 
     private val binding get() = _binding!!
     private var status: String = "Erro"
@@ -44,7 +45,7 @@ class ClientFragment : Fragment() {
         }
         setupAdapter()
         setupObserver()
-        lifecycleScope.launch(Dispatchers.IO) { clientViewModel.getClient() }
+        lifecycleScope.launch(Dispatchers.IO) { clientViewModel.getClientById(clientId) }
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Dados do cliente"
     }
 

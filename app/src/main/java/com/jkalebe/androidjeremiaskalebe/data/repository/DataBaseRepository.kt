@@ -1,13 +1,12 @@
 package com.jkalebe.androidjeremiaskalebe.data.repository
 
-import androidx.lifecycle.LiveData
 import com.jkalebe.androidjeremiaskalebe.core.database.ClientDAO
 import com.jkalebe.androidjeremiaskalebe.core.database.ContactDAO
 import com.jkalebe.androidjeremiaskalebe.core.database.OrderDAO
 import com.jkalebe.androidjeremiaskalebe.domain.models.Cliente
 import com.jkalebe.androidjeremiaskalebe.domain.models.Pedido
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientWithContacts
-import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientWithOrders
+import com.jkalebe.androidjeremiaskalebe.domain.models.database.OrderEntity
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.toCliente
 import com.jkalebe.androidjeremiaskalebe.domain.models.toClientEntity
 import com.jkalebe.androidjeremiaskalebe.domain.models.toContactEntity
@@ -31,16 +30,12 @@ class DataBaseRepository(val orderDAO: OrderDAO, val clientDAO: ClientDAO, val c
         orderDAO.insertOrder(orderEntity)
     }
 
-    fun getAllClients(): Flow<List<Cliente>> = clientDAO.getAllClients().map { entities ->
-        entities.map { it.toCliente(listOf()) }
-    }
-
     fun getClientById(clientId: Int): Flow<Cliente?> = clientDAO.getClientById(clientId).map { it?.toCliente(
         listOf()
     ) }
 
     fun getClientWithContacts(clientId: Int): Flow<ClientWithContacts> = clientDAO.getClientWithContacts(clientId)
 
-    fun getClientWithOrders(clientId: Int): LiveData<ClientWithOrders> = clientDAO.getClientWithOrders(clientId)
+    fun getOrdersByClientId(clientId: Int) : List<OrderEntity>? = orderDAO.getOrderByClientId(clientId)
 
 }

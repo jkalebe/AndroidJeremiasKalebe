@@ -1,9 +1,9 @@
 package com.jkalebe.androidjeremiaskalebe.core
 
 import androidx.room.Room
+import com.jkalebe.androidjeremiaskalebe.core.api.RetrofitClient
 import com.jkalebe.androidjeremiaskalebe.core.database.AppDatabase
 import com.jkalebe.androidjeremiaskalebe.data.remote.ApiInterface
-import com.jkalebe.androidjeremiaskalebe.core.api.RetrofitClient
 import com.jkalebe.androidjeremiaskalebe.data.repository.ApiRepository
 import com.jkalebe.androidjeremiaskalebe.data.repository.DataBaseRepository
 import com.jkalebe.androidjeremiaskalebe.views.client.ClientViewModel
