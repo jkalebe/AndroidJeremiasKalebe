@@ -5,16 +5,18 @@ import com.jkalebe.androidjeremiaskalebe.core.database.AppDatabase
 import com.jkalebe.androidjeremiaskalebe.data.remote.ApiInterface
 import com.jkalebe.androidjeremiaskalebe.core.api.RetrofitClient
 import com.jkalebe.androidjeremiaskalebe.data.repository.ApiRepository
+import com.jkalebe.androidjeremiaskalebe.data.repository.DataBaseRepository
 import com.jkalebe.androidjeremiaskalebe.views.client.ClientViewModel
 import org.koin.dsl.module
 
 private const val DATABASE_NAME = "maxima.db"
 val repositoryModule = module {
     single { ApiRepository(get ()) }
+    single { DataBaseRepository(get (), get (), get ()) }
 }
 
 val viewModule = module {
-    single { ClientViewModel(get()) }
+    single { ClientViewModel(get(), get()) }
 }
 
 val networkModule = module {

@@ -1,6 +1,8 @@
 package com.jkalebe.androidjeremiaskalebe.domain.models
 
 import com.google.gson.annotations.SerializedName
+import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientEntity
+import com.jkalebe.androidjeremiaskalebe.domain.models.database.ContactEntity
 import java.io.Serializable
 
 data class Cliente(
@@ -12,7 +14,7 @@ data class Cliente(
     @SerializedName("ramo_atividade") val ramoAtividade: String,
     @SerializedName("endereco") val endereco: String,
     @SerializedName("status") val status: String,
-    @SerializedName("contatos") val contatos: List<Contato>
+    @SerializedName("contatos") var contatos: List<Contato>
 ): Serializable
 
 data class Contato(
@@ -30,3 +32,32 @@ data class Contato(
 data class DataRaw(
     @SerializedName("cliente") val cliente: Cliente,
 )
+
+fun Cliente.toClientEntity(): ClientEntity {
+    return ClientEntity(
+        id = this.id,
+        codigo = this.codigo,
+        razaoSocial = this.razaoSocial,
+        nomeFantasia = this.nomeFantasia,
+        cnpj = this.cnpj,
+        ramoAtividade = this.ramoAtividade,
+        endereco = this.endereco,
+        status = this.status,
+    )
+}
+
+fun Contato.toContactEntity(clientId: Int): ContactEntity {
+    return ContactEntity(
+        id = 0, // Assumindo autoGenerate = true para o ID
+        clientId = clientId,
+        nome = this.nome,
+        telefone = this.telefone,
+        celular = this.celular,
+        conjuge = this.conjuge,
+        tipo = this.tipo,
+        time = this.time,
+        email = this.email,
+        dataNascimento = this.dataNascimento,
+        dataNascimentoConjuge = this.dataNascimentoConjuge
+    )
+}

@@ -29,7 +29,7 @@ interface ClientDAO {
 
     @Transaction
     @Query("SELECT * FROM Client WHERE id = :clientId")
-    fun getClientWithContacts(clientId: Int): LiveData<ClientWithContacts>
+    fun getClientWithContacts(clientId: Int): Flow<ClientWithContacts>
 
     @Transaction
     @Query("SELECT * FROM Client WHERE id = :clientId")

@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.jkalebe.androidjeremiaskalebe.domain.models.Cliente
+import com.jkalebe.androidjeremiaskalebe.domain.models.Contato
 
 @Entity(tableName = "Client")
 data class ClientEntity(
@@ -17,8 +18,8 @@ data class ClientEntity(
     @ColumnInfo("status") val status: String,
 )
 
-fun ClientEntity.toCliente(list: List<ContactEntity>): Cliente {
+fun ClientEntity.toCliente(list: List<Contato>): Cliente {
     return Cliente(
-        id, codigo, razaoSocial, nomeFantasia, cnpj, ramoAtividade, endereco, status, listOf()
+        id, codigo, razaoSocial, nomeFantasia, cnpj, ramoAtividade, endereco, status, list
     )
 }
