@@ -12,9 +12,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".views.client.fragment.ClientFragment">
 
@@ -37,7 +37,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dados do cliente" />
+                    android:text="Dados do cliente"
+                    android:textColor="@color/client_data_text"/>
 
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -45,12 +46,14 @@
 
                 <TextView
                     android:id="@+id/label_id_name_company"
+                    android:textColor="@color/client_data_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="40.795 - A E D REMEDIOS E PERFUMARIA - EIRELI - M" />
 
                 <TextView
                     android:id="@+id/label_name_fantasy"
+                    android:textColor="@color/client_data_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DROGARIA CAMPESTRE" />
@@ -60,12 +63,16 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:textSize="14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CPF: " />
+                        android:text="CPF: "
+                        android:textColor="@color/client_data_labels"/>
 
                     <TextView
+                        android:textSize="14sp"
                         android:id="@+id/label_cpf"
+                        android:textColor="@color/client_data_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="039.039.039-61" />
@@ -76,12 +83,16 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:textSize="14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CNPJ: " />
+                        android:text="CNPJ: "
+                        android:textColor="@color/client_data_labels"/>
 
                     <TextView
+                        android:textSize="14sp"
                         android:id="@+id/label_cnpj"
+                        android:textColor="@color/client_data_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10.766.206/0002-61" />
@@ -92,12 +103,16 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:textSize="14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ramo de atividade: " />
+                        android:text="Ramo de atividade: "
+                        android:textColor="@color/client_data_labels"/>
 
                     <TextView
+                        android:textSize="14sp"
                         android:id="@+id/label_activity"
+                        android:textColor="@color/client_data_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Panificadora" />
@@ -108,12 +123,16 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:textSize="14sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Endereços: " />
+                        android:text="Endereços: "
+                        android:textColor="@color/client_data_labels"/>
 
                     <TextView
+                        android:textSize="14sp"
                         android:id="@+id/label_address"
+                        android:textColor="@color/client_data_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ROD BR-060 KM 388 SN" />
@@ -138,9 +157,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="10dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -149,15 +170,16 @@
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
                     android:layout_height="1dp" />
+
                 <Space
                     android:layout_width="0dp"
-                    android:layout_height="10dp" />
+                    android:layout_height="5dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_contact"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_contact" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -167,23 +189,23 @@
 
         <Button
             android:id="@+id/btn_verify"
-            style="@style/Widget.Material3.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rectangle"
             android:text="Verificar status do cliente" />
 
     </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pbLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bottom_inactive_icon_text"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/bottom_inactive_icon_text">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
             android:layout_width="50dp"

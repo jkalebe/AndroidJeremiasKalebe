@@ -4,8 +4,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-
         <TextView
             android:id="@+id/label_name_client"
             android:layout_width="wrap_content"
@@ -14,56 +12,58 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor= "@color/client_data_labels"
                     android:text="Telefone: " />
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textColor="@color/order_history_text"
                     android:id="@+id/label_phone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="3988-3889" />
+                    android:text="3988-3889"
+                    android:layout_weight="1"/>
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:src="@drawable/ic_maxima_telefone"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor= "@color/client_data_labels"
                     android:text="E-mail: " />
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textColor="@color/order_history_text"
                     android:id="@+id/label_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="leandro.rossi@gmail.com" />
+                    android:text="leandro.rossi@gmail.com"
+                    android:ellipsize="end"
+                    android:maxLines="1"/>
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:src="@drawable/ic_maxima_email"/>
             </LinearLayout>
@@ -71,7 +71,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -79,22 +80,22 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor= "@color/client_data_labels"
                     android:text="Celular: " />
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textColor="@color/order_history_text"
                     android:id="@+id/label_smartphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3988-3889" />
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:src="@drawable/ic_maxima_telefone"/>
             </LinearLayout>
@@ -105,14 +106,14 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor= "@color/client_data_labels"
                     android:text="Data Nasc: " />
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textColor="@color/order_history_text"
                     android:id="@+id/label_date_birth"
                     android:layout_width="wrap_content"
@@ -123,7 +124,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -131,14 +133,14 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor= "@color/client_data_labels"
                     android:text="Tipo: " />
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textColor="@color/order_history_text"
                     android:id="@+id/label_type"
                     android:layout_width="wrap_content"
@@ -152,14 +154,14 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor= "@color/client_data_labels"
                     android:text="Time: " />
 
                 <TextView
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textColor="@color/order_history_text"
                     android:id="@+id/label_soccer_club"
                     android:layout_width="wrap_content"
@@ -171,16 +173,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <TextView
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time: " />
 
             <TextView
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:textColor="@color/order_history_text"
                 android:id="@+id/label_soccer_club_2"
                 android:layout_width="wrap_content"

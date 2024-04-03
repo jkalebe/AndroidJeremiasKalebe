@@ -1,6 +1,11 @@
 package com.jkalebe.androidjeremiaskalebe.views.client.fragment
 
+import android.app.Activity
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -8,11 +13,15 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.jkalebe.androidjeremiaskalebe.R
+import com.jkalebe.androidjeremiaskalebe.databinding.DialogSubtitlesBinding
 import com.jkalebe.androidjeremiaskalebe.databinding.FragmentHistoryBinding
 import com.jkalebe.androidjeremiaskalebe.domain.models.Pedido
 import com.jkalebe.androidjeremiaskalebe.views.client.ClientViewModel
@@ -63,7 +72,9 @@ class HistoryFragment : Fragment() {
     }
 
     private fun showOrders(orders: List<Pedido>) {
-        adapter.updateList(orders)
+        if (::adapter.isInitialized) {
+            adapter.updateList(orders)
+        }
     }
 
 
@@ -77,15 +88,16 @@ class HistoryFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_legends -> {
-                showSnackBar("Click ralizado com sucesso")
+                showSubtitlesDialog(requireActivity())
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun setupObserver(){
-        lifecycleScope.launch{
+    private fun setupObserver() {
+        lifecycleScope.launch {
             clientViewModel.odersState.collect { viewState ->
                 when (viewState) {
                     is OrdersViewState.ShowLoading -> toggleLoading(true)
@@ -105,6 +117,35 @@ class HistoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun showSubtitlesDialog(activity: Activity) {
+        if (activity.isFinishing || activity.isDestroyed) {
+            return
+        }
+
+        val layoutInflater = LayoutInflater.from(activity)
+        val binding: DialogSubtitlesBinding = DialogSubtitlesBinding.inflate(layoutInflater)
+
+        binding.apply {
+            inProcessed.background.setColorFilter(getResources().getColor(R.color.processing_order), PorterDuff.Mode.SRC_ATOP)
+            refused.background.setColorFilter(getResources().getColor(R.color.order_refused), PorterDuff.Mode.SRC_ATOP)
+            pending.background.setColorFilter(getResources().getColor(R.color.pending_order), PorterDuff.Mode.SRC_ATOP)
+            blocked.background.setColorFilter(getResources().getColor(R.color.blocked_order), PorterDuff.Mode.SRC_ATOP)
+            released.background.setColorFilter(getResources().getColor(R.color.released_order), PorterDuff.Mode.SRC_ATOP)
+            assembled.background.setColorFilter(getResources().getColor(R.color.assembled_order), PorterDuff.Mode.SRC_ATOP)
+            invoiced.background.setColorFilter(getResources().getColor(R.color.invoiced_order), PorterDuff.Mode.SRC_ATOP)
+            canceled.background.setColorFilter(getResources().getColor(R.color.canceled_order), PorterDuff.Mode.SRC_ATOP)
+            budget.background.setColorFilter(getResources().getColor(R.color.budget_order), PorterDuff.Mode.SRC_ATOP)
+
+        }
+
+        val dialog = AlertDialog.Builder(activity)
+            .setView(binding.root)
+            .setNegativeButton("Fechar") { dialog, _ -> dialog.dismiss() }
+            .create()
+
+        dialog.show()
     }
 
 }
