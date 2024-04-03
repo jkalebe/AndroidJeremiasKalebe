@@ -5,22 +5,25 @@ import androidx.lifecycle.map
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import com.jkalebe.androidjeremiaskalebe.domain.models.Cliente
+import com.jkalebe.androidjeremiaskalebe.domain.models.Contato
 import com.jkalebe.androidjeremiaskalebe.utils.toCliente
 
 @Entity(tableName = "Client")
 data class ClientEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "data") val data: String,
+    @PrimaryKey(autoGenerate = false) val id: Int,
+    @ColumnInfo("codigo") val codigo: String,
+    @ColumnInfo("razaoSocial") val razaoSocial: String,
+    @ColumnInfo("nomeFantasia") val nomeFantasia: String,
+    @ColumnInfo("cnpj") val cnpj: String,
+    @ColumnInfo("ramoAtividade") val ramoAtividade: String,
+    @ColumnInfo("endereco") val endereco: String,
+    @ColumnInfo("status") val status: String,
 )
 
-fun ClientEntity.toCliente(): Cliente {
-    return this.data.toCliente()
-}
-
-fun LiveData<ClientEntity?>.transformToPedido() : LiveData<Cliente?> {
-    val pedidoTransformado = this.map {
-        it?.toCliente()
-    }
-    return pedidoTransformado
+fun ClientEntity.toCliente(list: List<ContactEntity>): Cliente {
+    return Cliente(
+        id, codigo, razaoSocial, nomeFantasia, cnpj, ramoAtividade, endereco, status, listOf()
+    )
 }

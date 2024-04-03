@@ -1,26 +1,37 @@
-package br.com.paygo.smart.core.database
+package com.jkalebe.androidjeremiaskalebe.core.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientEntity
-import com.jkalebe.androidjeremiaskalebe.domain.models.database.PedidoEntity
+import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientWithContacts
+import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientWithOrders
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ClientDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun inserirPedido(pedido: ClientEntity)
+    suspend fun insertClient(pedido: ClientEntity)
 
-    @Query("SELECT * FROM Pedidos")
-    fun obterTodosPedidos(): Flow<List<PedidoEntity>>
+    @Query("SELECT * FROM Client")
+    fun getAllClients(): Flow<List<ClientDAO>>
 
-    @Query("SELECT * FROM Pedidos WHERE id = :pedidoId")
-    fun obterPedidoPorId(pedidoId: Int): Flow<PedidoEntity?>
+    @Query("SELECT * FROM Client WHERE id = :clientId")
+    fun getClientById(clientId: Int): Flow<ClientEntity?>
 
     @Update
-    suspend fun atualizarPedido(pedido: PedidoEntity)
+    suspend fun updateClient(client: ClientEntity)
+
+    @Transaction
+    @Query("SELECT * FROM Client WHERE id = :clientId")
+    fun getClientWithContacts(clientId: Int): LiveData<ClientWithContacts>
+
+    @Transaction
+    @Query("SELECT * FROM Client WHERE id = :clientId")
+    fun getClientWithOrders(clientId: Int): LiveData<ClientWithOrders>
 }

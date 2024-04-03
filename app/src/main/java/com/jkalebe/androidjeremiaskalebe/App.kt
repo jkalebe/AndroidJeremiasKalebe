@@ -1,6 +1,7 @@
 package com.jkalebe.androidjeremiaskalebe
 
 import android.app.Application
+import com.jkalebe.androidjeremiaskalebe.core.databaseModule
 import com.jkalebe.androidjeremiaskalebe.core.viewModule
 import com.jkalebe.androidjeremiaskalebe.core.networkModule
 import com.jkalebe.androidjeremiaskalebe.core.repositoryModule
@@ -23,7 +24,8 @@ open class App: Application() {
                 listOf(
                     repositoryModule,
                     viewModule,
-                    networkModule
+                    networkModule,
+                    databaseModule
                 )
             )
         }
