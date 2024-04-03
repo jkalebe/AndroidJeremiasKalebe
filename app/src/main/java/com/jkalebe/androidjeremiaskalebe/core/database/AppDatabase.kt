@@ -3,9 +3,6 @@ package com.jkalebe.androidjeremiaskalebe.core.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.jkalebe.androidjeremiaskalebe.core.database.ClientDAO
-import com.jkalebe.androidjeremiaskalebe.core.database.ContactDAO
-import com.jkalebe.androidjeremiaskalebe.core.database.OrderDAO
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.ClientEntity
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.ContactEntity
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.OrderEntity
