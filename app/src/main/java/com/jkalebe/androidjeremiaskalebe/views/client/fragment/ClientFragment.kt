@@ -45,8 +45,8 @@ class ClientFragment : Fragment() {
         }
         setupAdapter()
         setupObserver()
-        lifecycleScope.launch(Dispatchers.IO) { clientViewModel.getClientById(clientId) }
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Dados do cliente"
+        lifecycleScope.launch(Dispatchers.IO) { clientViewModel.getClientById(clientId) }
     }
 
     private fun setupAdapter() {
@@ -96,7 +96,7 @@ class ClientFragment : Fragment() {
     }
 
     private fun toggleLoading(shouldLoad: Boolean) {
-        binding.pbLoading.visibility = if (shouldLoad) View.VISIBLE else View.GONE
+        lifecycleScope.launch(Dispatchers.Main){ binding.pbLoading.visibility = if (shouldLoad) View.VISIBLE else View.GONE }
     }
 
     override fun onDestroyView() {

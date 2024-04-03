@@ -30,11 +30,8 @@ class DataBaseRepository(val orderDAO: OrderDAO, val clientDAO: ClientDAO, val c
         orderDAO.insertOrder(orderEntity)
     }
 
-    fun getClientById(clientId: Int): Flow<Cliente?> = clientDAO.getClientById(clientId).map { it?.toCliente(
-        listOf()
-    ) }
 
-    fun getClientWithContacts(clientId: Int): Flow<ClientWithContacts> = clientDAO.getClientWithContacts(clientId)
+    fun getClientWithContacts(clientId: Int): ClientWithContacts? = clientDAO.getClientWithContacts(clientId)
 
     fun getOrdersByClientId(clientId: Int) : List<OrderEntity>? = orderDAO.getOrderByClientId(clientId)
 

@@ -53,7 +53,6 @@ class OrderAdapter(
         return ViewHolder(binding)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.bind(context = context, pedido = item)

@@ -6,6 +6,7 @@ import com.jkalebe.androidjeremiaskalebe.data.repository.ApiRepository
 import com.jkalebe.androidjeremiaskalebe.data.repository.DataBaseRepository
 import com.jkalebe.androidjeremiaskalebe.domain.models.Cliente
 import com.jkalebe.androidjeremiaskalebe.domain.models.Pedido
+import com.jkalebe.androidjeremiaskalebe.domain.models.database.toCliente
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.toContato
 import com.jkalebe.androidjeremiaskalebe.domain.models.database.toPedido
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ class ClientViewModel(
     private val dataBaseRepository: DataBaseRepository,
     private val apiRepository: ApiRepository
 ) : ViewModel() {
+    private val DATABASE_EMPTY = "Banco de dados vazio. Buscando dados na api..."
     private var _clientState =
         MutableStateFlow<ClientViewState>(value = ClientViewState.OnDefault)
     val clientState: StateFlow<ClientViewState> = _clientState
@@ -78,7 +80,8 @@ class ClientViewModel(
             try {
                 dataBaseRepository.insertClient(cliente)
             } catch (e: Exception) {
-                _clientState.value = ClientViewState.OnError("Erro ao salvar cliente no banco: ${e.message}")
+                print("Erro ao salvar cliente no banco: ${e.message}")
+//                _clientState.value = ClientViewState.OnError("Erro ao salvar cliente no banco: ${e.message}")
             }
         }
     }
@@ -98,39 +101,36 @@ class ClientViewModel(
                     }
                 }
             } catch (e: Exception) {
-                _ordersState.value = OrdersViewState.OnError("Erro ao salvar pedidos no banco: ${e.message}")
+                print("Erro ao salvar pedidos no banco: ${e.message}")
+//                _ordersState.value = OrdersViewState.OnError("Erro ao salvar pedidos no banco: ${e.message}")
             }
     }
 
 
     fun getClientById(clientId: Int) {
         viewModelScope.launch {
-            _clientState.value = ClientViewState.ShowLoading
-            dataBaseRepository.getClientById(clientId).collect { client ->
-                client?.let {
-                    dataBaseRepository.getClientWithContacts(clientId).collect {
-                        client.contatos = it.contacts.map { c -> c.toContato() }
-                        _clientState.value = ClientViewState.ShowClient(client)
-                    }
-                } ?: run {
-                    _clientState.value = ClientViewState.OnError("Sem clientes")
-                    getClientCallApi()
-                }
+            val clientWithContacts = withContext(Dispatchers.IO){ dataBaseRepository.getClientWithContacts(clientId) }
+            if(clientWithContacts != null) {
+                val contacts = clientWithContacts.contacts.map { c -> c.toContato() }
+                val client: Cliente = clientWithContacts.client.toCliente(contacts)
+
+                _clientState.value = ClientViewState.ShowClient(client)
+            } else {
+                _clientState.value = ClientViewState.OnError(DATABASE_EMPTY)
+                getClientCallApi()
             }
         }
     }
 
     fun getOrdersByClientId(clientId: Int) {
         viewModelScope.launch {
-            _ordersState.value = OrdersViewState.ShowLoading
-
             val ordersFromDb = withContext(Dispatchers.IO){ dataBaseRepository.getOrdersByClientId(clientId) }
             if (ordersFromDb.isNullOrEmpty()) {
+                _ordersState.value = OrdersViewState.OnError(DATABASE_EMPTY)
                 getOrdersCallApi(clientId)
             } else {
                 _ordersState.value = OrdersViewState.ShowOrders(ordersFromDb.map { o -> o.toPedido() })
             }
-            _ordersState.value = OrdersViewState.HideLoading
         }
     }
 }

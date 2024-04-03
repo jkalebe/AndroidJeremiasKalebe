@@ -1,6 +1,7 @@
 package com.jkalebe.androidjeremiaskalebe.views.client.fragment
 
 import android.app.Activity
+import android.app.Dialog
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,12 +23,14 @@ import com.jkalebe.androidjeremiaskalebe.domain.models.Pedido
 import com.jkalebe.androidjeremiaskalebe.views.client.ClientViewModel
 import com.jkalebe.androidjeremiaskalebe.views.client.OrdersViewState
 import com.jkalebe.androidjeremiaskalebe.views.client.adapter.OrderAdapter
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
+    private var subtitlesDialog: Dialog? = null
     private val binding get() = _binding!!
     private val clientViewModel by viewModel<ClientViewModel>()
     private lateinit var adapter: OrderAdapter
@@ -68,8 +71,10 @@ class HistoryFragment : Fragment() {
     }
 
     private fun showOrders(orders: List<Pedido>) {
-        if (::adapter.isInitialized) {
-            adapter.updateList(orders)
+        lifecycleScope.launch(Dispatchers.Main){
+            if (::adapter.isInitialized) {
+                adapter.updateList(orders)
+            }
         }
     }
 
@@ -107,12 +112,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun toggleLoading(shouldLoad: Boolean) {
-        binding.pbLoading.visibility = if (shouldLoad) View.VISIBLE else View.GONE
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        lifecycleScope.launch(Dispatchers.Main){ binding.pbLoading.visibility = if (shouldLoad) View.VISIBLE else View.GONE }
     }
 
     fun showSubtitlesDialog(activity: Activity) {
@@ -136,12 +136,20 @@ class HistoryFragment : Fragment() {
 
         }
 
-        val dialog = AlertDialog.Builder(activity)
+        subtitlesDialog =  AlertDialog.Builder(activity)
             .setView(binding.root)
             .setNegativeButton("Fechar") { dialog, _ -> dialog.dismiss() }
             .create()
 
-        dialog.show()
+        subtitlesDialog?.show()
+    }
+
+
+    override fun onDestroyView() {
+        subtitlesDialog?.dismiss()
+        subtitlesDialog = null
+        super.onDestroyView()
+        _binding = null
     }
 
 }
